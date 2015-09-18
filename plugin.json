@@ -1,11 +1,17 @@
 {
-	"id": "nodebb-plugin-sso-oauth",
-	"name": "NodeBB OAuth SSO",
-	"description": "NodeBB Plugin that allows users to login/register via any configured OAuth provider.",
-	"url": "https://github.com/julianlam/nodebb-plugin-sso-oauth",
+	"id": "nodebb-plugin-sso-wordpress",
+	"name": "NodeBB Wordpress SSO",
+	"description": "Allows users to log in via a configured Wordpress account",
+	"url": "https://github.com/julianlam/nodebb-plugin-sso-wordpress",
 	"library": "./library.js",
 	"hooks": [
+		{ "hook": "static:app.load", "method": "init" },
+		{ "hook": "filter:admin.header.build", "method": "addAdminNavigation" },
 		{ "hook": "filter:user.delete", "method": "deleteUserData" },
 		{ "hook": "filter:auth.init", "method": "getStrategy" }
-	]
+	],
+	"scripts": [
+		"static/lib/admin.js"
+	],
+	"templates": "static/templates"
 }

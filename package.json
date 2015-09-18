@@ -1,11 +1,11 @@
 {
-  "name": "nodebb-plugin-sso-oauth",
-  "version": "0.2.5",
-  "description": "NodeBB Generic OAuth SSO",
+  "name": "nodebb-plugin-sso-wordpress",
+  "version": "0.0.0",
+  "description": "NodeBB Wordpress SSO",
   "main": "library.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/julianlam/nodebb-plugin-sso-oauth"
+    "url": "https://github.com/julianlam/nodebb-plugin-sso-wordpress"
   },
   "keywords": [
     "nodebb",
@@ -15,7 +15,8 @@
     "sso",
     "single sign on",
     "login",
-    "registration"
+    "registration",
+    "wordpress"
   ],
   "author": {
     "name": "Julian Lam",
@@ -23,7 +24,7 @@
   },
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/julianlam/nodebb-plugin-sso-oauth/issues"
+    "url": "https://github.com/julianlam/nodebb-plugin-sso-wordpress/issues"
   },
   "readme": "",
   "readmeFilename": "README.md",
