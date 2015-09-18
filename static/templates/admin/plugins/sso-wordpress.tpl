@@ -4,11 +4,23 @@
 		<div class="alert alert-info">
 			<ol>
 				<li>
-					ins 1
+					This SSO plugin allows you to enable Single Sign-On with a
+					custom Wordpress installation.
 				</li>
 				<li>
 					Some notes:
 					<ul>
+						<li>
+							You must download and install the
+							<a href="https://wp-oauth.com/">WP OAuth Server</a>
+							plugin for your Wordpress installation.
+						</li>
+						<li>
+							In the OAuth Server plugin settings, you will need
+							to create a new OAuth client for your NodeBB
+							install. This is how you get the Client ID and
+							Secret.
+						</li>
 						<li>
 							Ensure that you have permalink settings enabled.
 							You may need to update your web server settings to
@@ -23,6 +35,9 @@
 			<div class="form-group">
 				<label for="url">Site URL</label>
 				<input type="text" name="url" id="url" title="Site URL" class="form-control" placeholder="http://example.com" />
+				<p class="help-block">
+					There is no need to add a trailing slash to this value (e.g. Use <code>http://example.com</code>, not <code>http://example.com/</code>)
+				</p>
 			</div>
 			<div class="form-group">
 				<label for="id">Client ID</label>
