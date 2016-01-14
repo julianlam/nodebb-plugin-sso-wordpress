@@ -174,18 +174,18 @@
 		});
 	};
 
-	OAuth.deleteUserData = function(uid, callback) {
+	OAuth.deleteUserData = function(data, callback) {
 		async.waterfall([
-			async.apply(User.getUserField, uid, pluginStrategies[0].name + 'Id'),
+			async.apply(User.getUserField, data.uid, pluginStrategies[0].name + 'Id'),
 			function(oAuthIdToDelete, next) {
 				db.deleteObjectField(pluginStrategies[0].name + 'Id:uid', oAuthIdToDelete, next);
 			}
 		], function(err) {
 			if (err) {
-				winston.error('[sso-oauth] Could not remove OAuthId data for uid ' + uid + '. Error: ' + err);
+				winston.error('[sso-oauth] Could not remove OAuthId data for uid ' + data.uid + '. Error: ' + err);
 				return callback(err);
 			}
-			callback(null, uid);
+			callback(null);
 		});
 	};
 
