@@ -1,6 +1,6 @@
 {
   "name": "nodebb-plugin-sso-wordpress",
-  "version": "1.0.1",
+  "version": "2.0.0",
   "description": "NodeBB Wordpress SSO",
   "main": "library.js",
   "repository": {
