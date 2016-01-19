@@ -10,7 +10,7 @@
 		{ "hook": "static:user.delete", "method": "deleteUserData" },
 		{ "hook": "filter:auth.init", "method": "getStrategy" }
 	],
-	"scripts": [
+	"acpScripts": [
 		"static/lib/admin.js"
 	],
 	"templates": "static/templates"
