@@ -38,12 +38,13 @@
 					},
 					userRoute: settings.url + '/oauth/me/'
 				});
+
+				callback();
 			} else {
 				winston.verbose('[plugin/sso-wordpress] Please complete configuration for Wordpress SSO login');
+				callback();
 			}
 		});
-
-		callback();
 	};
 
 	OAuth.addAdminNavigation = function(header, callback) {
