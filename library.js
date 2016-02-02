@@ -25,16 +25,22 @@
 		router.get('/api/admin/plugins/sso-wordpress', controllers.renderAdminPage);
 
 		meta.settings.get('sso-wordpress', function(err, settings) {
-			pluginStrategies.push({
-				name: 'wordpress',	// Something unique to your OAuth provider in lowercase, like "github", or "nodebb"
-				oauth2: {
-					authorizationURL: settings.url + '/oauth/authorize',
-					tokenURL: settings.url + '/oauth/token',
-					clientID: settings.id,
-					clientSecret: settings.secret
-				},
-				userRoute: settings.url + '/oauth/me/'
-			});
+			if (settings && ['url', 'id', 'secret'].every(function(key) {
+				return settings.hasOwnProperty(key) && settings[key]
+			})) {
+				pluginStrategies.push({
+					name: 'wordpress',	// Something unique to your OAuth provider in lowercase, like "github", or "nodebb"
+					oauth2: {
+						authorizationURL: settings.url + '/oauth/authorize',
+						tokenURL: settings.url + '/oauth/token',
+						clientID: settings.id,
+						clientSecret: settings.secret
+					},
+					userRoute: settings.url + '/oauth/me/'
+				});
+			} else {
+				winston.verbose('[plugin/sso-wordpress] Please complete configuration for Wordpress SSO login');
+			}
 		});
 
 		callback();
