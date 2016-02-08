@@ -48,6 +48,32 @@
 		});
 	};
 
+	OAuth.addMiddleware = function(data, callback) {
+		data.app.use(function(req, res, next) {
+			// Only respond to page loads by guests, not api or asset calls
+			var blacklistedRoute = new RegExp('^' + nconf.get('relative_path') + '/(api|vendor|uploads|language|templates|debug|auth)'),
+				blacklistedExt = /\.(css|js|tpl|json|jpg|png|bmp|rss|xml|woff2)$/,
+				hasSession = req.hasOwnProperty('user') && req.user.hasOwnProperty('uid') && parseInt(req.user.uid, 10) > 0;
+
+			if (
+				hasSession	// user logged in
+				|| (req.path.match(blacklistedRoute) || req.path.match(blacklistedExt))	// path matches a blacklist
+			) {
+				return next();
+			} else {
+				meta.settings.getOne('sso-wordpress', 'redirectEnabled', function(err, value) {
+					if (value === 'on') {
+						res.redirect('/auth/' + pluginStrategies[0].name);
+					} else {
+						return next();
+					}
+				})
+			}
+		});
+
+		callback();
+	};
+
 	OAuth.addAdminNavigation = function(header, callback) {
 		header.authentication.push({
 			route: '/plugins/sso-wordpress',

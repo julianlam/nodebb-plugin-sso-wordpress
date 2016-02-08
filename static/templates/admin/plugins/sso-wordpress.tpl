@@ -47,6 +47,12 @@
 				<label for="secret">Client Secret</label>
 				<input type="text" name="secret" id="secret" title="Client Secret" class="form-control" placeholder="Client Secret"/ >
 			</div>
+			<div class="checkbox">
+				<label class="mdl-switch mdl-js-switch mdl-js-ripple-effect">
+					<input class="mdl-switch__input" type="checkbox" name="redirectEnabled">
+					<span class="mdl-switch__label"><strong>Automatically redirect guests to Wordpress SSO</strong></span>
+				</label>
+			</div>
 		</form>
 	</div>
 </div>
