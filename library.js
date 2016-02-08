@@ -4,6 +4,7 @@
 	var User = module.parent.require('./user'),
 		Groups = module.parent.require('./groups'),
 		meta = module.parent.require('./meta'),
+		plugins = module.parent.require('./plugins'),
 		db = module.parent.require('../src/database'),
 		passport = module.parent.require('passport'),
 		fs = module.parent.require('fs'),
@@ -92,7 +93,16 @@
 					if (err) {
 						return done(err);
 					}
-					done(null, user);
+
+					plugins.fireHook('static:sso-wordpress.login', {
+						user: user,
+						strategy: pluginStrategies[0],
+						profile: profile/*,
+						token: token,
+						secret: secret*/
+					}, function() {
+						done(null, user);
+					});
 				});
 			}));
 
