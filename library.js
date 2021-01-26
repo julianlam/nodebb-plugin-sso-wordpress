@@ -1,17 +1,15 @@
 (function(module) {
 	"use strict";
 
-	var User = module.parent.require('./user'),
-		Groups = module.parent.require('./groups'),
-		meta = module.parent.require('./meta'),
-		plugins = module.parent.require('./plugins'),
-		db = module.parent.require('../src/database'),
-		passport = module.parent.require('passport'),
-		fs = module.parent.require('fs'),
-		path = module.parent.require('path'),
-		nconf = module.parent.require('nconf'),
-		winston = module.parent.require('winston'),
-		async = module.parent.require('async'),
+	var User = require.main.require('./src/user'),
+		Groups = require.main.require('./src/groups'),
+		meta = require.main.require('./src/meta'),
+		plugins = require.main.require('./src/plugins'),
+		db = require.main.require('./src/database'),
+		passport = require.main.require('passport'),
+		nconf = require.main.require('nconf'),
+		winston = require.main.require('winston'),
+		async = require('async'),
 
 		pluginStrategies = [],
 		OAuth = {}, passportOAuth, opts;
