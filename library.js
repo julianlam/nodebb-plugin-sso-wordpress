@@ -118,7 +118,7 @@
 						return done(err);
 					}
 
-					plugins.fireHook('static:sso-wordpress.login', {
+					plugins.hooks.fire('static:sso-wordpress.login', {
 						user: user,
 						strategy: pluginStrategies[0],
 						profile: profile/*,
