@@ -9,19 +9,20 @@
 		passport = require.main.require('passport'),
 		nconf = require.main.require('nconf'),
 		winston = require.main.require('winston'),
-		async = require('async'),
+		async = require('async');
 
-		pluginStrategies = [],
-		OAuth = {}, passportOAuth, opts;
+	const routeHelpers = require.main.require('./src/routes/helpers');
+	const controllers = require('./controllers');
+
+	const pluginStrategies = [];
+	const OAuth = {};
+	let passportOAuth;
+	let opts;
 
 	OAuth.init = function(params, callback) {
-		var router = params.router,
-			hostMiddleware = params.middleware,
-			hostControllers = params.controllers,
-			controllers = require('./controllers');
+		var router = params.router;
 
-		router.get('/admin/plugins/sso-wordpress', hostMiddleware.admin.buildHeader, controllers.renderAdminPage);
-		router.get('/api/admin/plugins/sso-wordpress', controllers.renderAdminPage);
+		routeHelpers.setupAdminPageRoute(router, '/admin/plugins/sso-wordpress', controllers.renderAdminPage);
 
 		meta.settings.get('sso-wordpress', function(err, settings) {
 			if (settings && ['url', 'id', 'secret'].every(function(key) {
