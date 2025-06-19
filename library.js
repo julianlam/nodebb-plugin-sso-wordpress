@@ -62,7 +62,7 @@
 			} else {
 				meta.settings.getOne('sso-wordpress', 'redirectEnabled', function(err, value) {
 					if (value === 'on') {
-						res.redirect('/auth/' + pluginStrategies[0].name);
+						res.redirect(nconf.get('relative_path') + '/auth/' + pluginStrategies[0].name);
 					} else {
 						return next();
 					}
