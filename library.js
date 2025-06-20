@@ -136,6 +136,12 @@
 				url: '/auth/' + pluginStrategies[0].name,
 				callbackURL: '/auth/' + pluginStrategies[0].name + '/callback',
 				icon: 'fa-wordpress',
+				icons: {
+					normal: 'fa fa-wordpress'
+				},
+				labels: {
+					login: 'Wordpress'
+				},
 				scope: (pluginStrategies[0].scope || '').split(',')
 			});
 		}
