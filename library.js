@@ -136,6 +136,15 @@
 				url: '/auth/' + pluginStrategies[0].name,
 				callbackURL: '/auth/' + pluginStrategies[0].name + '/callback',
 				icon: 'fa-wordpress',
+				icons: {
+					normal: 'fa-brands fa-wordpress',
+					square: 'fa-brands fa-wordpress-simple',
+				},
+				labels: {
+					login: '[[social:sign-in-with-wordpress]]',
+					register: '[[social:sign-in-with-wordpress]]',
+				},
+				color: '#21759b',
 				scope: (pluginStrategies[0].scope || '').split(',')
 			});
 		}
