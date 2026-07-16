@@ -2,7 +2,7 @@
 
 const Controllers = module.exports;
 
-Controllers.renderAdminPage = function (req, res, next) {
+Controllers.renderAdminPage = function (req, res) {
 	res.render('admin/plugins/sso-wordpress', {
 		title: 'Wordpress SSO',
 	});
